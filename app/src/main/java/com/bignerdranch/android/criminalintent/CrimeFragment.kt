@@ -10,19 +10,16 @@ import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 
-class CrimeFragment: Fragment() {
-
+class CrimeFragment : Fragment() {
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
     private lateinit var dateButton: Button
     private lateinit var solvedCheckBox: CheckBox
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         crime = Crime()
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,7 +38,7 @@ class CrimeFragment: Fragment() {
         return view
     }
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
         val titleWatcher = object : TextWatcher
         {
@@ -51,7 +48,7 @@ class CrimeFragment: Fragment() {
                 count: Int,
                 after: Int
             ) {
-                // Это пространство оставлено пустым специально
+                // Это пространство оставлено  пустым специально
             }
             override fun onTextChanged(
                 sequence: CharSequence?,
@@ -59,12 +56,13 @@ class CrimeFragment: Fragment() {
                 before: Int,
                 count: Int
             ) {
-                crime.title = sequence.toString()
+                crime.title =
+                    sequence.toString()
             }
-            override fun afterTextChanged(sequence: Editable?) { // И это
+            override fun
+                    afterTextChanged(sequence: Editable?) {
+                // И это
             }
-
-
         }
         titleField.addTextChangedListener(titleWatcher)
         solvedCheckBox.apply {
@@ -72,6 +70,5 @@ class CrimeFragment: Fragment() {
                 crime.isSolved = isChecked
             }
         }
-
     }
 }
